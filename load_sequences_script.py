@@ -1,7 +1,7 @@
 
 '''
 
-Preparation
+Preparation [Done]
 
 1 Set all actions on table 'actions'
     'SELECT DISTINCT action FROM all_students_users_log_course266'
@@ -15,15 +15,17 @@ Main routine
 
 2 Get a student A
 
-3 Get all the events from student A
+2.1 Get all the events from student A
 
-4 Group the events by day
+2.2 Group the events by day
 
-5 Get an event group E_A
+2.3 Get an event group E_A
 
-6 Set a sequence for group E_A
+2.4 Set a sequence for group E_A
 
-7 Set the events of E_A on the table event
+2.5 Set the events of E_A on the table event
+
+3 Go back step 2 with student A+1
 
 '''
 
@@ -78,3 +80,24 @@ conn_new.commit()
 print "Modules were inserted.\n"
 
 print " ========= Preparation done ========== "
+print " ========= Starting Routine ========== "
+
+#Get all students from log
+print "Step 1 - Getting all students..."
+cur_old.execute("""SELECT DISTINCT userid FROM all_students_users_log_course266 ORDER BY userid""")
+all_students = cur_old.fetchall()
+print str(len(all_students))+" students were found."
+
+print "Building sequences..."
+s = 1
+for student in all_students:
+    print "\nStep 2: Student - "+str(student[0])+" - Order: "+str(s)+"/"+str(len(all_students))"."
+
+    print "Step 2.1 - Getting events from student "+str(student[0])+"..."
+    cur_old.execute("""SELECT * FROM all_students_users_log_course266 WHERE userid=%s ORDER BY time DESC""", (student[0],))
+    this_student_events = cur_old.fetchall()
+    print str(student[0])+" has "+str(len(this_student_events))+" log events."
+
+    print "Step 2.2 - Grouping "+str(student[0])+" events by day cicles..."
+    #Each cicle will be a sequence row...
+    
