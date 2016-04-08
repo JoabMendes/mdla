@@ -1,33 +1,26 @@
 
-'''
+# Preparation [Done]
+#1 Set all actions on table 'actions'
+#    'SELECT DISTINCT action FROM all_students_users_log_course266'
+#2 Set all modules on table 'modules'
+#    'SELECT DISTINCT module FROM all_students_users_log_course266'
 
-Preparation [Done]
+#========== Main routine ==============
 
-1 Set all actions on table 'actions'
-    'SELECT DISTINCT action FROM all_students_users_log_course266'
+#1 Get all students from log (unique) [Done]
 
-2 Set all modules on table 'modules'
-    'SELECT DISTINCT module FROM all_students_users_log_course266'
+#2 Get a student A [Done]
 
-Main routine
+#2.1 Get all the events from student A [Done]
 
-1 Get all students from log (unique)
+#2.2 Group the events by day [Done]
 
-2 Get a student A
+#2.2.1 Set a sequence for group E_A
 
-2.1 Get all the events from student A
+#2.2.2 Get an event group E_A
 
-2.2 Group the events by day
+#2.2.3 Set the events of E_A on the table event
 
-2.3 Get an event group E_A
-
-2.4 Set a sequence for group E_A
-
-2.5 Set the events of E_A on the table event
-
-3 Go back step 2 with student A+1
-
-'''
 
 #Libraries
 import psycopg2
@@ -91,14 +84,15 @@ all_students = cur_old.fetchall()
 print str(len(all_students))+" students were found."
 
 print "Building sequences..."
-s = 0
+std = 0 #Students counter
+sqc = 0 #Sequences counter
 for student in all_students:
-    s+=1
-    print "\nStep 2: Student - "+str(student[0])+" - Order: "+str(s)+"/"+str(len(all_students))+"."
+    std+=1
+    print "\nStep 2: Student - "+str(student[0])+" - Order: "+str(std)+"/"+str(len(all_students))+"."
 
     #2.1 Get this student events
     print "Step 2.1 - Getting events from student "+str(student[0])+"..."
-    cur_old.execute("""SELECT * FROM all_students_users_log_course266 WHERE userid=%s ORDER BY time DESC""", (student[0],))
+    cur_old.execute("""SELECT * FROM all_students_users_log_course266 WHERE userid=%s ORDER BY time""", (student[0],))
     this_student_events = cur_old.fetchall()
     print str(student[0])+" has "+str(len(this_student_events))+" log events."
 
@@ -111,5 +105,17 @@ for student in all_students:
     #Builds an array of sequences properly grouped
     sequences_a = [sequences_dic.get(sequence, []) for sequence in range(min(sequences_dic), max(sequences_dic)+1)]
     print str(student[0])+" has "+str(len(sequences_a))+" event sequences."
+    print sequences_a
+    break
 
-    #2.3 ...
+    #2.2.1 Building sequences individualy
+    '''
+        sequence = [  (3939624L, 1368137089L, 4013L, 266L, 'course', 'view', 5L),
+            (3939610L, 1368137062L, 4013L, 266L, 'forum', 'view forum', 5L), ... ]
+    '''
+    for sequence in sequences:
+        sqc+=1
+        if len(sequence):
+            sequence_start = sequence[0][1]
+            sequence_end = sequence[-1][1]
+        #cur_new.execute("INSERT INTO sequences")
