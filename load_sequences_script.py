@@ -31,6 +31,8 @@ Main routine
 
 #Libraries
 import psycopg2
+from datetime import date
+import time
 
 
 #Preparation
@@ -89,15 +91,25 @@ all_students = cur_old.fetchall()
 print str(len(all_students))+" students were found."
 
 print "Building sequences..."
-s = 1
+s = 0
 for student in all_students:
-    print "\nStep 2: Student - "+str(student[0])+" - Order: "+str(s)+"/"+str(len(all_students))"."
+    s+=1
+    print "\nStep 2: Student - "+str(student[0])+" - Order: "+str(s)+"/"+str(len(all_students))+"."
 
+    #2.1 Get this student events
     print "Step 2.1 - Getting events from student "+str(student[0])+"..."
     cur_old.execute("""SELECT * FROM all_students_users_log_course266 WHERE userid=%s ORDER BY time DESC""", (student[0],))
     this_student_events = cur_old.fetchall()
     print str(student[0])+" has "+str(len(this_student_events))+" log events."
 
-    print "Step 2.2 - Grouping "+str(student[0])+" events by day cicles..."
+    #2.2 Group the events of this student by days
+    print "Step 2.2 - Grouping "+str(student[0])+" events by day cicles (sequences)..."
     #Each cicle will be a sequence row...
-    
+    sequences_dic = {}
+    for event in this_student_events:
+        sequences_dic.setdefault(date.fromtimestamp(event[1]).toordinal(), []).append(event)
+    #Builds an array of sequences properly grouped
+    sequences_a = [sequences_dic.get(sequence, []) for sequence in range(min(sequences_dic), max(sequences_dic)+1)]
+    print str(student[0])+" has "+str(len(sequences_a))+" event sequences."
+
+    #2.3 ...
