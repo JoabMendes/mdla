@@ -109,13 +109,19 @@ for student in all_students:
     break
 
     #2.2.1 Building sequences individualy
-    '''
-        sequence = [  (3939624L, 1368137089L, 4013L, 266L, 'course', 'view', 5L),
-            (3939610L, 1368137062L, 4013L, 266L, 'forum', 'view forum', 5L), ... ]
-    '''
     for sequence in sequences:
         sqc+=1
+        sequence_id = None
         if len(sequence):
+            #Sequencia não ociosa
             sequence_start = sequence[0][1]
             sequence_end = sequence[-1][1]
+            duration = sequence_end - sequence_start
+            cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration) VALUES (%s, %s, %s, %s)""", (student[0], sequence_start, sequence_end, duration))
+            sequence_id = cur_new.lastrowid()
+        else:
+            sequence_start = 
+            sequence_end =
+            duration = 86400 #Seconds of a day
+
         #cur_new.execute("INSERT INTO sequences")
