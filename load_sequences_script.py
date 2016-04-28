@@ -24,9 +24,18 @@
 
 #Libraries
 import psycopg2
-from datetime import date
+from datetime import date, datetime, timedelta
 import time
 
+
+#Helper functions
+
+def getNextDay(last_day):
+    last_day = datetime.utcfromtimestamp(last_day)
+    tomorrow = last_day + timedelta(days=1)
+    tomorrow_start = datetime(tomorrow.year, tomorrow.month, tomorrow.day, 0, 0, 0, 0)
+    tomorrow_end = datetime(tomorrow.year, tomorrow.month, tomorrow.day, 23, 59, 0, 0)
+    return [int(tomorrow_start.strftime("%s")), int(tomorrow_end.strftime("%s"))]
 
 #Preparation
 
@@ -105,23 +114,33 @@ for student in all_students:
     #Builds an array of sequences properly grouped
     sequences_a = [sequences_dic.get(sequence, []) for sequence in range(min(sequences_dic), max(sequences_dic)+1)]
     print str(student[0])+" has "+str(len(sequences_a))+" event sequences."
-    print sequences_a
-    break
 
     #2.2.1 Building sequences individualy
-    for sequence in sequences:
+    last_sequence = None
+    for sequence in sequences_a:
         sqc+=1
         sequence_id = None
+        sequence_start = None
+        sequence_end = None
+        duration = None
         if len(sequence):
-            #Sequencia não ociosa
+            #No idle sequence
             sequence_start = sequence[0][1]
             sequence_end = sequence[-1][1]
-            duration = sequence_end - sequence_start
-            cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration) VALUES (%s, %s, %s, %s)""", (student[0], sequence_start, sequence_end, duration))
-            sequence_id = cur_new.lastrowid()
+            duration = sequence_end - sequence_start if sequence_end - sequence_start else 1
+            last_sequence = sequence
+
         else:
-            sequence_start = 
-            sequence_end =
+            #idle squence
+            #Get the next day of the last sequence
+            this_day = getNextDay(last_sequence[0][1])
+            sequence_start = this_day[0] #Default: this day at 00:00
+            sequence_end = this_day[1] #Default: this day at 23:59
+            #To avoid the last sequence to be empty
+            last_sequence = [["start", sequence_start], ["end", sequence_end], 1 ]
             duration = 86400 #Seconds of a day
 
-        #cur_new.execute("INSERT INTO sequences")
+        #cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration) VALUES (%s, %s, %s, %s)""", (student[0], sequence_start, sequence_end, duration))
+        #sequence_id = cur_new.lastrowid()
+        #WORKING NOW
+    break
