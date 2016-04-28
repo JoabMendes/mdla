@@ -101,7 +101,7 @@ for student in all_students:
 
     #2.1 Get this student events
     print "Step 2.1 - Getting events from student "+str(student[0])+"..."
-    cur_old.execute("""SELECT * FROM all_students_users_log_course266 WHERE userid=%s ORDER BY time""", (student[0],))
+    cur_old.execute("""SELECT * FROM all_students_users_log_course266 WHERE userid=%s ORDER BY time""", [student[0]])
     this_student_events = cur_old.fetchall()
     print str(student[0])+" has "+str(len(this_student_events))+" log events."
 
@@ -137,10 +137,30 @@ for student in all_students:
             sequence_start = this_day[0] #Default: this day at 00:00
             sequence_end = this_day[1] #Default: this day at 23:59
             #To avoid the last sequence to be empty
-            last_sequence = [["start", sequence_start], ["end", sequence_end], 1 ]
+            last_sequence = [["start", sequence_start], ["end", sequence_end], "idle" ]
             duration = 86400 #Seconds of a day
 
-        #cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration) VALUES (%s, %s, %s, %s)""", (student[0], sequence_start, sequence_end, duration))
-        #sequence_id = cur_new.lastrowid()
-        #WORKING NOW
-    break
+        cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration) VALUES (%s, %s, %s, %s) RETURNING sequence_id""", (student[0], sequence_start, sequence_end, duration))
+
+        #The id of the sequence inserted
+        sequence_id = cur_new.fetchone()[0]
+
+        #Insert all events of this sequence
+        if len(sequence):
+            for event in sequence:
+                #2.2.2 Get an event group E_A
+                    #Get this action id
+                    action_label = event[5]
+                    cur_new.execute("""SELECT action_id FROM actions WHERE label=%s""", [action_label])
+                    action_id = cur_new.fetchone()[0]
+                    #Get this module id
+                    module_label = event[4]
+                    cur_new.execute("""SELECT module_id FROM modules WHERE label=%s""", [module_label])
+                    module_id = cur_new.fetchone()[0]
+                    cur_new.execute("""INSERT INTO event(sequence_id, action_id, module_id) VALUES (%s, %s, %s)""", (sequence_id, action_id, module_id))
+        else:
+            cur_new.execute("""INSERT INTO event(sequence_id) VALUES (%s)""", [sequence_id])
+
+        #2.2.3 Set the events of E_A on the table event
+        conn_new.commit()
+    print "Sequences were inserted.\n"
