@@ -4,7 +4,7 @@ FROM mdlacademico_log m_log
 INNER JOIN mdlacademico_role_assignments m_role_a on m_role_a.userid = m_log.userid
 -- INNER JOIN mdlacademico_user u on u.id = m_log.userid
 WHERE
-m_log.course = 266 and -- Turma 88 = Mesma que o trabalho de Thaísa
+m_log.course = 266 and -- Turma com o mais númeor de estudantes
 m_role_a.roleid = 5 and  -- Role = 5 Estudante
 m_role_a.contextid in (SELECT id from mdlacademico_context context where context.instanceid = m_log.course)
 ORDER BY m_log.userid, m_log.time
