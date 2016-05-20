@@ -20,14 +20,16 @@ if conn_new.status:
 
 cur_new = conn_new.cursor()
 
-f = open('output.txt', 'w+')
+f = open('basket.txt', 'w+')
 
 #Get students
 cur_new.execute("""SELECT DISTINCT student FROM sequences""")
 students = cur_new.fetchall()
 
+stdsc = len(students)
+c = 1
 for std in students:
-    std_sqc_str = str(std[0])+","
+    std_sqc_str = ""
     #Get sequences of this student
     cur_new.execute("""SELECT sequence_id FROM sequences WHERE student=%s""", [std[0]])
     sequences = cur_new.fetchall()
@@ -36,8 +38,12 @@ for std in students:
         cur_new.execute("""SELECT action_id, module_id FROM event WHERE sequence_id=%s""", [sqc[0]])
         events = cur_new.fetchall()
         for evt in events:
-            evtstr = str(evt[0])+":"+str(evt[1])+","
+            if str(evt[0]) == "None" or str(evt[1]) == "None":
+                evtstr = "0000,"
+            else:
+                evtstr = str(evt[0])+""+str(evt[1])+","
             std_sqc_str+=evtstr
     f.write(std_sqc_str+"\n")
-    print "Done with student: "+str(std[0])
+    print "Done with student: "+str(std[0])+" ("+str(c)+"/"+str(stdsc)+")"
+    c+=1
 f.close()
