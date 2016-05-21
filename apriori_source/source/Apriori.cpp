@@ -5,7 +5,7 @@
     copyright            : (C) 2002 by Ferenc Bodon
     email                : bodon@cs.bme.hu
  ***************************************************************************/
-#include <cstdlib>
+
 #include "Apriori.hpp"
 #include <iostream>
 #include <vector>
