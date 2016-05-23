@@ -1,5 +1,0 @@
-Frequent 0-itemsets:
-itemset (occurrence)
-{} (492)
-Frequent 1-itemsets:
-itemset (occurrence)
