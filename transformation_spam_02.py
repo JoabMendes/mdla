@@ -1,6 +1,9 @@
 
 '''
 Transform sequential data to csv for Apriori algorithm input
+
+ACTION MODULE -1
+
 '''
 
 
@@ -21,7 +24,7 @@ if conn_new.status:
 
 cur_new = conn_new.cursor()
 
-f = open('basket_wid.txt', 'w+')
+f = open('spam_02_2_input.txt', 'w+')
 
 # Get students
 cur_new.execute("""SELECT DISTINCT student FROM sequences""")
@@ -42,9 +45,9 @@ for std in students:
         events = cur_new.fetchall()
         for evt in events:
             if str(evt[0]) == "None" or str(evt[1]) == "None":
-                evtstr = "0000 "
+                evtstr = "0000 -1 "
             else:
-                evtstr = str(evt[0]) + "" + str(evt[1]) + " "
+                evtstr = str(evt[0]) + " " + str(evt[1]) + " -1 "
             std_sqc_str += evtstr
     f.write(std_sqc_str + "\n")
     print "Done with student: " + str(std[0]) + " (" + str(c) + "/" + str(stdsc) + ")"
