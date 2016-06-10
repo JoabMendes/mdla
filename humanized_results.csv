@@ -1,0 +1,32 @@
+'view:quiz' , 'view:course' , #SUP: 430.0
+'view:course' , 'view:quiz' , #SUP: 423.0
+'view:course' , 'view:choice' , #SUP: 411.0
+'view:user' , 'view:course' , #SUP: 411.0
+'view forum:forum' , 'view forum:forum' , #SUP: 400.0
+'view discussion:forum' , 'view:course' , #SUP: 389.0
+'view forum:forum' , 'view discussion:forum' , #SUP: 388.0
+'view forum:forum' , 'view:user' , #SUP: 378.0
+'view:choice' , 'view:course' , #SUP: 370.0
+'view:course' , 'view:resource' , 'view:course' , #SUP: 448.0
+'view:course' , 'view forum:forum' , 'view:course' , #SUP: 436.0
+'view:course' , 'view:assign' , 'view submit assignment form:assign' , #SUP: 433.0
+'view:course' , 'view:course' , 'view:course' , #SUP: 426.0
+'view:course' , 'idle' , 'idle' , #SUP: 425.0
+'view:course' , 'view:page' , 'view:course' , #SUP: 424.0
+'view:course' , 'view:url' , 'view:course' , #SUP: 397.0
+'view:assign' , 'view:course' , 'view:course' , #SUP: 390.0
+'view:course' , 'view:course' , 'view:assign' , #SUP: 387.0
+'idle' , 'view:course' , 'view:course' , #SUP: 381.0
+'submit:assign' , 'view:assign' , 'submit for grading:assign' , #SUP: 381.0
+'view:course' , 'view:course' , 'view forum:forum' , #SUP: 381.0
+'view:course' , 'view:course' , 'view:resource' , #SUP: 374.0
+'view:assign' , 'submit for grading:assign' , 'view:assign' , #SUP: 374.0
+'view forum:forum' , 'view:course' , 'view:assign' , #SUP: 372.0
+'view forum:forum' , 'view:course' , 'view:course' , #SUP: 370.0
+'view:assign' , 'view:course' , 'view forum:forum' , #SUP: 369.0
+'continue attempt:quiz' , 'view summary:quiz' , 'close attempt:quiz' , 'view:quiz' , #SUP: 411.0
+'view:assign' , 'view submit assignment form:assign' , 'submit:assign' , 'view:assign' , #SUP: 383.0
+'view:quiz' , 'attempt:quiz' , 'continue attempt:quiz' , 'view summary:quiz' , #SUP: 377.0
+'view:course' , 'view:assign' , 'view:course' , 'view:assign' , #SUP: 375.0
+'idle' , 'idle' , 'idle' , 'idle' , 'view:course' , #SUP: 408.0
+'idle' , 'idle' , 'idle' , 'idle' , 'idle' , #SUP: 385.0
