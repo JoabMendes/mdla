@@ -16,7 +16,7 @@ def sort_list(lista):
     return new_list
 
 
-ori_results = open('spam_output_75.txt')
+ori_results = open('spam_output_50.txt')
 
 
 brute_content = ori_results.readlines()
@@ -30,7 +30,7 @@ for b in brute_content:
 #organize array sequences by size
 #array_content = sort_list(array_content)
 
-print array_content
+#print array_content
 
 
 i = 0

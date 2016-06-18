@@ -1,0 +1,36 @@
+'idle' , 'view:course' , 'view forum:forum' , #SUP: 277
+'idle' , 'view:course' , 'view:assign' , 'view:course' , #SUP: 252
+'idle' , 'view:course' , 'view:resource' , 'view:course' , #SUP: 253
+'add discussion:forum' , 'view forum:forum' , #SUP: 253
+'view forum:forum' , 'idle' , #SUP: 269
+'view:course' , 'view forum:forum' , 'view:user' , #SUP: 294
+'view:course' , 'view forum:forum' , 'add post:forum' , 'view forum:forum' , #SUP: 298
+'view:course' , 'view forum:forum' , 'view discussion:forum' , #SUP: 325
+'view:course' , 'view:chat' , #SUP: 315
+'view:course' , 'view:course' , 'idle' , #SUP: 309
+'view:course' , 'view:assign' , 'view submit assignment form:assign' , 'submit:assign' , 'view:assign' , 'submit for grading:assign' , 'view:assign' , #SUP: 262
+'view:user' , 'view:user' , 'view:course' , #SUP: 257
+'view:url' , 'view:course' , 'view:resource' , #SUP: 262
+'view:assign' , 'idle' , #SUP: 318
+'view:assign' , 'view submit assignment form:assign' , 'submit:assign' , 'view:assign' , 'submit for grading:assign' , 'view:assign' , #SUP: 313
+'view:assign' , 'view submit assignment form:assign' , 'view:assign' , 'submit:assign' , #SUP: 293
+'view:assign' , 'submit:assign' , 'submit for grading:assign' , 'view:assign' , #SUP: 250
+'view:assign' , 'submit for grading:assign' , 'view:assign' , 'view:course' , #SUP: 294
+'view:assign' , 'view:course' , 'view forum:forum' , 'view:course' , #SUP: 286
+'view:assign' , 'view:course' , 'view:assign' , 'view submit assignment form:assign' , #SUP: 262
+'continue attempt:quiz' , 'view summary:quiz' , 'close attempt:quiz' , 'view:quiz' , 'view:course' , #SUP: 276
+'view:resource' , 'idle' , #SUP: 293
+'view:resource' , 'view:course' , 'view forum:forum' , #SUP: 291
+'view:resource' , 'view:course' , 'view:assign' , 'view:course' , #SUP: 254
+'view:resource' , 'view:assign' , #SUP: 287
+'view:resource' , 'view:resource' , 'view:course' , #SUP: 288
+'view:resource' , 'view:resource' , 'view:resource' , #SUP: 261
+'add post:forum' , 'view forum:forum' , 'view forum:forum' , #SUP: 290
+'view:page' , 'view:course' , #SUP: 441
+'view:page' , 'view:quiz' , #SUP: 256
+'view:quiz' , 'attempt:quiz' , 'continue attempt:quiz' , 'view summary:quiz' , 'close attempt:quiz' , 'view:quiz' , #SUP: 317
+'view:quiz' , 'view:course' , 'view forum:forum' , #SUP: 269
+'view:choice' , 'view:course' , #SUP: 370
+'choose:choice' , 'view:choice' , #SUP: 251
+'view discussion:forum' , 'view:course' , #SUP: 389
+'view discussion:forum' , 'view discussion:forum' , #SUP: 297

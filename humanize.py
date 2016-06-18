@@ -15,17 +15,17 @@ for line in brute_content:
 #print dictionary
 
 #Read the relev
-result = open('spam_result_by_relevance.txt')
+result = open('relevant_results_50.txt')
 
 result_content = result.readlines()
 
 
-humanized = open('humanized_results.csv', "w+")
+humanized = open('humanized_results_50.csv', "w+")
 
 for result_line in result_content:
     result_line_array = result_line.split()
     i = 0
-    while i < len(result_line_array):
+    while i < (len(result_line_array)-1): #Last element is the number of support, it should be not be search on the dictionary
         print result_line_array[i] in dictionary
         if result_line_array[i] in dictionary:
             ev_label = dictionary[result_line_array[i]]
