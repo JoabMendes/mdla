@@ -15,12 +15,12 @@ for line in brute_content:
 #print dictionary
 
 #Read the relev
-result = open('relevant_results_50.txt')
+result = open('relevant_results_51.txt')
 
 result_content = result.readlines()
 
 
-humanized = open('humanized_results_50.csv', "w+")
+humanized = open('humanized_results_51.csv', "w+")
 
 for result_line in result_content:
     result_line_array = result_line.split()
@@ -38,3 +38,6 @@ for result_line in result_content:
         print result_line_array
     human_line = ' '.join(result_line_array)
     humanized.write(human_line+"\n")
+
+humanized.close()
+result.close()
