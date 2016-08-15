@@ -1,0 +1,71 @@
+'add discussion:forum' => 'view forum:forum' => #SUP: 253 => 51%
+'view:chat' => 'view:course' => #SUP: 290 => 58%
+'view:course' => 'view forums:forum' => #SUP: 252 => 51%
+'view:course' => 'view:chat' => #SUP: 315 => 64%
+'view:course' => 'view:user' => #SUP: 293 => 59%
+'view:resource' => 'view forum:forum' => #SUP: 283 => 57%
+'view:resource' => 'view:assign' => #SUP: 287 => 58%
+'view:page' => 'view:quiz' => #SUP: 256 => 52%
+'view:choice' => 'choose:choice' => #SUP: 352 => 71%
+'choose:choice' => 'view:choice' => #SUP: 251 => 51%
+'view discussion:forum' => 'view discussion:forum' => #SUP: 297 => 60%
+
+
+'view forum:forum' => 'view forum:forum' => 'view forum:forum' => #SUP: 264 => 53%
+'view forum:forum' => 'view forum:forum' => 'view:course' => #SUP: 334 => 67%
+'view forum:forum' => 'view:course' => 'view:resource' => #SUP: 292 => 59%
+'view forum:forum' => 'view discussion:forum' => 'view:course' => #SUP: 301 => 61%
+'view:course' => 'view forum:forum' => 'view forum:forum' => #SUP: 283 => 57%
+'view:course' => 'view forum:forum' => 'view:user' => #SUP: 294 => 59%
+'view:course' => 'view forum:forum' => 'view discussion:forum' => #SUP: 325 => 66%
+'view:course' => 'view:course' => 'view:page' => #SUP: 301 => 61%
+'view:course' => 'view:url' => 'view:course' => #SUP: 397 => 80%
+'view:course' => 'view:assign' => 'view:assign' => #SUP: 257 => 52%
+'view:course' => 'view:resource' => 'view:resource' => #SUP: 347 => 70%
+'view:course' => 'view:page' => 'view:course' => #SUP: 424 => 86%
+'view:course' => 'view:quiz' => 'view:course' => #SUP: 342 => 69%
+'view:course' => 'view:choice' => 'view:course' => #SUP: 304 => 61%
+'view:user' => 'view:course' => 'view:course' => #SUP: 266 => 54%
+'view:user' => 'view:user' => 'view:course' => #SUP: 257 => 52%
+'view:url' => 'view:course' => 'view:resource' => #SUP: 262 => 53%
+'view:assign' => 'view:assign' => 'view:course' => #SUP: 266 => 54%
+'view:resource' => 'view:resource' => 'view:course' => #SUP: 288 => 58%
+'view:resource' => 'view:resource' => 'view:resource' => #SUP: 261 => 53%
+'view:quiz' => 'view:course' => 'view forum:forum' => #SUP: 269 => 54%
+
+
+'view forum:forum' => 'view:course' => 'view forum:forum' => 'view:course' => #SUP: 269 => 54%
+'view forum:forum' => 'view:course' => 'view:assign' => 'view:course' => #SUP: 313 => 63%
+'view forum:forum' => 'add post:forum' => 'view forum:forum' => 'view forum:forum' => #SUP: 269 => 54%
+'view:course' => 'view forum:forum' => 'view:course' => 'view forum:forum' => #SUP: 283 => 57%
+'view:course' => 'view forum:forum' => 'view:course' => 'view:course' => #SUP: 317 => 64%
+'view:course' => 'view forum:forum' => 'view:course' => 'view:assign' => #SUP: 304 => 61%
+'view:course' => 'view forum:forum' => 'add post:forum' => 'view forum:forum' => #SUP: 298 => 60%
+'view:course' => 'view:course' => 'view forum:forum' => 'view:course' => #SUP: 304 => 61%
+'view:course' => 'view:course' => 'view:course' => 'view:course' => #SUP: 337 => 68%
+'view:course' => 'view:course' => 'view:assign' => 'view:course' => #SUP: 330 => 67%
+'view:course' => 'view:course' => 'view:resource' => 'view:course' => #SUP: 330 => 67%
+'view:course' => 'view:assign' => 'view submit assignment form:assign' => 'view:assign' => #SUP: 282 => 57%
+'view:course' => 'view:assign' => 'view:course' => 'view forum:forum' => #SUP: 320 => 65%
+'view:course' => 'view:assign' => 'view:course' => 'view:course' => #SUP: 344 => 69%
+'view:course' => 'view:assign' => 'view:course' => 'view:resource' => #SUP: 272 => 55%
+'view:course' => 'view:resource' => 'view:course' => 'view forum:forum' => #SUP: 269 => 54%
+'view:course' => 'view:resource' => 'view:course' => 'view:course' => #SUP: 316 => 64%
+'view:course' => 'view:resource' => 'view:course' => 'view:assign' => #SUP: 288 => 58%
+'view:assign' => 'view submit assignment form:assign' => 'view:assign' => 'submit:assign' => #SUP: 293 => 59%
+'view:assign' => 'view:course' => 'view forum:forum' => 'view:course' => #SUP: 286 => 58%
+'view:assign' => 'view:course' => 'view:course' => 'view:course' => #SUP: 254 => 51%
+'view:assign' => 'view:course' => 'view:assign' => 'view submit assignment form:assign' => #SUP: 262 => 53%
+'view:resource' => 'view:course' => 'view:assign' => 'view:course' => #SUP: 254 => 51%
+
+
+'view:course' => 'view:assign' => 'view:course' => 'view:assign' => 'view:course' => #SUP: 309 => 62%
+'view:course' => 'view:resource' => 'view:course' => 'view:resource' => 'view:course' => #SUP: 296 => 60%
+'continue attempt:quiz' => 'view summary:quiz' => 'close attempt:quiz' => 'view:quiz' => 'view:course' => #SUP: 276 => 56%
+
+'view submit assignment form:assign' => 'submit:assign' => 'view:assign' => 'submit for grading:assign' => 'view:assign' => 'view:course' => #SUP: 271 => 55%
+'view:quiz' => 'attempt:quiz' => 'continue attempt:quiz' => 'view summary:quiz' => 'close attempt:quiz' => 'view:quiz' => #SUP: 317 => 64%
+
+'view:course' => 'view:assign' => 'view submit assignment form:assign' => 'submit:assign' => 'view:assign' => 'submit for grading:assign' => 'view:assign' => #SUP: 262 => 53%
+
+'idle' => 'idle' => 'idle' => 'idle' => 'idle' => 'idle' => 'idle' => 'view:course' => #SUP: 263 => 53%
