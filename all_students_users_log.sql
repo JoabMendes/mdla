@@ -17,7 +17,9 @@ m_role_a.contextid IN
          FROM mdlacademico_context context
          WHERE context.instanceid = m_log.course)
 ORDER BY m_log.userid,
-         m_log.time -- SELECT DA TURMA COM O MAIOR NUMERO DE ESTUDANTES
+         m_log.time
+
+-- SELECT DA TURMA COM O MAIOR NUMERO DE ESTUDANTES
 
 SELECT count(DISTINCT(ra.userid)) AS estudantes,
        c.instanceid AS courseid,
@@ -33,12 +35,26 @@ GROUP BY ra.contextid,
          c.id,
          c.instanceid,
          course.id
-ORDER BY estudantes DESC -- Novas açoes
+ORDER BY estudantes DESC
 
+-- Novas açoes
 SELECT DISTINCT action
 FROM all_students_users_log_course266
 WHERE action NOT IN
         (SELECT DISTINCT action
          FROM all_students_users_log_course88)
+
+--- LISTAR TURMAS E ATIVIDADES
+SELECT count(mdlacademico_log.id) AS activity, mdlacademico_log.course
+ FROM mdlacademico_log
+ INNER JOIN mdlacademico_role_assignments m_role_a ON m_role_a.userid = mdlacademico_log.userid
+ INNER JOIN mdlacademico_context context ON context.id =  m_role_a.contextid
+ WHERE m_role_a.roleid = 5 AND
+ m_role_a.contextid IN
+         (SELECT id
+          FROM mdlacademico_context context
+          WHERE context.instanceid = mdlacademico_log.course)
+ GROUP BY mdlacademico_log.course
+ ORDER BY activity DESC
 
 -- esdrascaleb@gmail.com
