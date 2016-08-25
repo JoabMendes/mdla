@@ -29,5 +29,5 @@ Os scripts SQL de seleção estão no anexo `00_select_courses.sql`. Onde a cont
 turma foram armazenadas na tabela `a_courses_activity`, a seleção das turmas com o uso médio na tabela
 `a_selected_courses` e o log das turmas selecionadas em `a_selected_log`.
 
-Ao todo, `42` duas turmas forma selecionadas, fornecendo um número de `2826630` intâncias
+Ao todo, `42` turmas forma selecionadas, fornecendo um número de `2826630` intâncias
 de log a serem mineradas.
