@@ -7,19 +7,21 @@
 
 #========== Main routine ==============
 
-#1 Get all students from log (unique) [Done]
+# Get all students from log (unique) [Done]
 
-#2 Get a student A [Done]
+# Get a student A [Done]
 
-#2.1 Get all the events from student A [Done]
+# Get all the courses of student A
 
-#2.2 Group the events by day [Done]
+# Get all the events from student A in Course X [Done]
 
-#2.2.1 Set a sequence for group E_A
+# Group the events by day of course X [Done]
 
-#2.2.2 Get an event group E_A
+# Set a sequence for group E_A
 
-#2.2.3 Set the events of E_A on the table event
+# Get an event group E_A
+
+# Set the events of E_A on the table event
 
 
 #Libraries
@@ -99,69 +101,76 @@ for student in all_students:
     std+=1
     print "\nStep 2: Student - "+str(student[0])+" - Order: "+str(std)+"/"+str(len(all_students))+"."
 
-    #2.1 Get this student events
-    print "Step 2.1 - Getting events from student "+str(student[0])+"..."
-    cur_old.execute("""SELECT * FROM a_selected_log WHERE userid=%s ORDER BY time""", [student[0]])
-    this_student_events = cur_old.fetchall()
-    print str(student[0])+" has "+str(len(this_student_events))+" log events."
+    #Get the couses of this student
+    print "Getting courses of this student"
+    cur_old.execute("""SELECT DISTINCT course FROM a_selected_log WHERE userid=%s""", [student[0]])
+    this_student_courses = cur_old.fetchall()
+    total_courses_this_student = str(len(this_student_courses))
+    print "Student has "+total_courses_this_student+" courses."
+    coursec = 0
+    for course in this_student_courses:
+        coursec+=1
+        #Get this student events for this course
+        print "Getting events from student "+str(student[0])+" in course "+str(coursec)+"/"+total_courses_this_student+"."
+        cur_old.execute("""SELECT * FROM a_selected_log WHERE userid=%s AND course=%s ORDER BY time""", (student[0], course[0]))
+        this_student_events = cur_old.fetchall()
 
-    #2.2 Group the events of this student by days
-    print "Step 2.2 - Grouping "+str(student[0])+" events by day cicles (sequences)..."
-    #Each cicle will be a sequence row...
-    sequences_dic = {}
-    for event in this_student_events:
-        sequences_dic.setdefault(date.fromtimestamp(event[1]).toordinal(), []).append(event)
-    #Builds an array of sequences properly grouped
-    sequences_a = [sequences_dic.get(sequence, []) for sequence in range(min(sequences_dic), max(sequences_dic)+1)]
-    print str(student[0])+" has "+str(len(sequences_a))+" event sequences."
+        #Group the events of this student by days
+        print "Grouping "+str(student[0])+" events by day cicles (sequences)..."
+        #Each cicle will be a sequence row...
+        sequences_dic = {}
+        for event in this_student_events:
+            sequences_dic.setdefault(date.fromtimestamp(event[1]).toordinal(), []).append(event)
+        #Builds an array of sequences properly grouped
+        sequences_a = [sequences_dic.get(sequence, []) for sequence in range(min(sequences_dic), max(sequences_dic)+1)]
+        print str(student[0])+" has "+str(len(sequences_a))+" event sequences in course "+course[0]+"."
 
-    #2.2.1 Building sequences individualy
-    last_sequence = None
-    for sequence in sequences_a:
-        sqc+=1
-        sequence_id = None
-        sequence_start = None
-        sequence_end = None
-        duration = None
-        if len(sequence):
-            #No idle sequence
-            sequence_start = sequence[0][1]
-            sequence_end = sequence[-1][1]
-            duration = sequence_end - sequence_start if sequence_end - sequence_start else 1
-            last_sequence = sequence
+        #2.2.1 Building sequences individualy
+        last_sequence = None
+        for sequence in sequences_a:
+            sqc+=1
+            sequence_id = None
+            sequence_start = None
+            sequence_end = None
+            duration = None
+            if len(sequence):
+                #No idle sequence
+                sequence_start = sequence[0][1]
+                sequence_end = sequence[-1][1]
+                duration = sequence_end - sequence_start if sequence_end - sequence_start else 1
+                last_sequence = sequence
 
-        else:
-            #idle squence
-            #Get the next day of the last sequence
-            this_day = getNextDay(last_sequence[0][1])
-            sequence_start = this_day[0] #Default: this day at 00:00
-            sequence_end = this_day[1] #Default: this day at 23:59
-            #To avoid the last sequence to be empty
-            last_sequence = [["start", sequence_start], ["end", sequence_end], "idle" ]
-            duration = 86400 #Seconds of a day
+            else:
+                #idle squence
+                #Get the next day of the last sequence
+                this_day = getNextDay(last_sequence[0][1])
+                sequence_start = this_day[0] #Default: this day at 00:00
+                sequence_end = this_day[1] #Default: this day at 23:59
+                #To avoid the last sequence to be empty
+                last_sequence = [["start", sequence_start], ["end", sequence_end], "idle" ]
+                duration = 86400 #Seconds of a day
 
-        cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration) VALUES (%s, %s, %s, %s) RETURNING sequence_id""", (student[0], sequence_start, sequence_end, duration))
+            cur_new.execute("""INSERT INTO sequences(student, sequence_start, sequence_end, duration, course) VALUES (%s, %s, %s, %s, %s) RETURNING sequence_id""", (student[0], sequence_start, sequence_end, duration, course[0]))
 
-        #The id of the sequence inserted
-        sequence_id = cur_new.fetchone()[0]
+            #The id of the sequence inserted
+            sequence_id = cur_new.fetchone()[0]
 
-        #Insert all events of this sequence
-        if len(sequence):
-            for event in sequence:
-                    course = event[3]
-                #2.2.2 Get an event group E_A
-                    #Get this action id
-                    action_label = event[5]
-                    cur_new.execute("""SELECT action_id FROM actions WHERE label=%s""", [action_label])
-                    action_id = cur_new.fetchone()[0]
-                    #Get this module id
-                    module_label = event[4]
-                    cur_new.execute("""SELECT module_id FROM modules WHERE label=%s""", [module_label])
-                    module_id = cur_new.fetchone()[0]
-                    cur_new.execute("""INSERT INTO event(sequence_id, action_id, module_id, course) VALUES (%s, %s, %s, %s)""", (sequence_id, action_id, module_id, course))
-        else:
-            cur_new.execute("""INSERT INTO event(sequence_id) VALUES (%s)""", [sequence_id])
+            #Insert all events of this sequence
+            if len(sequence):
+                for event in sequence:
+                    #2.2.2 Get an event group E_A
+                        #Get this action id
+                        action_label = event[5]
+                        cur_new.execute("""SELECT action_id FROM actions WHERE label=%s""", [action_label])
+                        action_id = cur_new.fetchone()[0]
+                        #Get this module id
+                        module_label = event[4]
+                        cur_new.execute("""SELECT module_id FROM modules WHERE label=%s""", [module_label])
+                        module_id = cur_new.fetchone()[0]
+                        cur_new.execute("""INSERT INTO event(sequence_id, action_id, module_id) VALUES (%s, %s, %s)""", (sequence_id, action_id, module_id))
+            else:
+                cur_new.execute("""INSERT INTO event(sequence_id) VALUES (%s)""", [sequence_id])
 
-        #2.2.3 Set the events of E_A on the table event
-        conn_new.commit()
-    print "Sequences were inserted.\n"
+            #2.2.3 Set the events of E_A on the table event
+            conn_new.commit()
+            print "Sequences were inserted for this student.\n"

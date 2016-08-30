@@ -23,6 +23,7 @@ rang <- 1:50
 #Matrices are like data frames but only accept one data type. If we convert iris to a matrix
 #it will convert all data frames elements to a strings.
 #Iris is a native data frame for testing
+
 as.matrix(iris)
 
 #List are are arrays of ordered objects
