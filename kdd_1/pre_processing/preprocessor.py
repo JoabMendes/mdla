@@ -123,7 +123,7 @@ for student in all_students:
             sequences_dic.setdefault(date.fromtimestamp(event[1]).toordinal(), []).append(event)
         #Builds an array of sequences properly grouped
         sequences_a = [sequences_dic.get(sequence, []) for sequence in range(min(sequences_dic), max(sequences_dic)+1)]
-        print str(student[0])+" has "+str(len(sequences_a))+" event sequences in course "+course[0]+"."
+        print str(student[0])+" has "+str(len(sequences_a))+" event sequences in course "+str(course[0])+"."
 
         #2.2.1 Building sequences individualy
         last_sequence = None
@@ -173,4 +173,4 @@ for student in all_students:
 
             #2.2.3 Set the events of E_A on the table event
             conn_new.commit()
-            print "Sequences were inserted for this student.\n"
+        print "Sequences were inserted for this student.\n"
