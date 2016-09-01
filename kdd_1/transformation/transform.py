@@ -35,26 +35,26 @@ c = 1
 for std in students:
     #str(std[0])+" "
     print "Tranforming student "+str(std[0])+"..."
-    std_sqc_str = str(std[0])+" "
+    std_sqc_str = ""
     #Get the courses of this student
     cur_new.execute("""SELECT DISTINCT course FROM sequences WHERE student=%s""", [std[0]])
     courses = cur_new.fetchall()
     total_courses = len(courses)
     c_courses = 0
+    cur_new.execute("""SELECT sequence_id, course FROM sequences WHERE student=%s""", [std[0]])
+    sequences = cur_new.fetchall()
+    cur_new.execute("""SELECT action_id, module_id, sequence_id FROM event WHERE sequence_id IN (SELECT sequence_id FROM sequences WHERE student=%s)""", [std[0]])
+    events = cur_new.fetchall()
     for course in courses:
-        # Get sequences of this student for this course
-        cur_new.execute("""SELECT sequence_id FROM sequences WHERE student=%s AND course=%s""", (std[0], course[0]))
-        sequences = cur_new.fetchall()
-        for sqc in sequences:
-            # Get the events of the sequences of this student
-            cur_new.execute("""SELECT action_id, module_id FROM event WHERE sequence_id=%s""", [sqc[0]])
-            events = cur_new.fetchall()
-            for evt in events:
-                if str(evt[0]) == "None" or str(evt[1]) == "None":
-                    evtstr = "0000 -1 "
-                else:
-                    evtstr = str(evt[0]) + "" + str(evt[1]) + " -1 "
-                std_sqc_str += evtstr
+        for sequence in sequences:
+            if sequence[1] == course[0]:
+                for event in events:
+                    if event[2] == sequence[0]:
+                        if str(event[0]) == "None" or str(event[1]) == "None":
+                            evtstr = "0000 -1 "
+                        else:
+                            evtstr = str(event[0]) + "" + str(event[1]) + " -1 "
+                        std_sqc_str += evtstr
         f.write(std_sqc_str + "-2\n")
         c_courses+=1
         print "Wrote course "+str(c_courses)+"/"+str(total_courses)+"."
