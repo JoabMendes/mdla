@@ -1,0 +1,10 @@
+read:page,download:file,idle,read:page,view:course,view:course,read:page
+view:page,view:course,read:page,download:file,idle,idle,view:course,read:page
+read:page,download:file,idle,read:page,idle,read:page,read:page,idle,download:file
+view:course,read:page,download:file,idle,idle,view:course,view:resource,view:page,view:course
+view:course,read:page,idle,idle,view:resource,view:page,view:page,idle
+view:course,view:resource,view:page,view:course,view:page,view:course,read:page,download:file
+view:course,read:page,download:file,idle,idle,read:page,view:course,view:course,read:page
+view:course,view:page,view:course,read:page,download:file,read:page,download:file,idle,read:page,view:course,read:page
+view:page,view:course,read:page,download:file,view:course,read:page,idle,idle
+view:course,read:page,idle,idle,read:page,download:file,idle,idle,view:course,read:page
