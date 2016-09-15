@@ -1,7 +1,7 @@
 library(TraMineR)
 
 #Read from csv
-behaviours <- read.csv(file="~/test.csv", header=FALSE)
+behaviours <- read.csv(file="~/workspace/sedis/kdd_1/3_transformation/input.csv", header=FALSE)
 
 #Transform into state sequences
 #http://traminer.unige.ch/doc/seqdef.html
@@ -16,7 +16,7 @@ behaviours.seqe <- seqecreate(behaviours.seq, teven="state")
 fbsubseq <- seqefsub(behaviours.seqe, pMinSupport=0.5)
 
 #export to data frame http://stackoverflow.com/questions/25654008/traminer-subseqelist-export-to-data-frame
-plot(fbsubseq)
+plot(fbsubseq[1:20], col = "cyan")
 #plot(fsubseq[1:15], col = "cyan")
 
 #Covert the object subseq as characte (eachonce)(Compressed format)
