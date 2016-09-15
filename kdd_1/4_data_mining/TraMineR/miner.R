@@ -11,9 +11,9 @@ behaviours.seq <- seqdef(behaviours, informat="STS")
 #http://traminer.unige.ch/doc/seqecreate.html
 behaviours.seqe <- seqecreate(behaviours.seq, teven="state")
 
-#Fiding the frequent subsequences (Frequency = 50%)
+#Fiding the frequent subsequences (Frequency = 51%)
 #http://traminer.unige.ch/doc/seqefsub.html
-fbsubseq <- seqefsub(behaviours.seqe, pMinSupport=0.5)
+fbsubseq <- seqefsub(behaviours.seqe, pMinSupport=0.51)
 
 #export to data frame http://stackoverflow.com/questions/25654008/traminer-subseqelist-export-to-data-frame
 plot(fbsubseq[1:20], col = "cyan")
