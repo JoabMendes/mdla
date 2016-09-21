@@ -1,7 +1,7 @@
 library(TraMineR)
 
 #Read from csv
-behaviours <- read.csv(file="~/joab_workspace/mdla_sedis/kdd_1/4_data_mining/TraMineR/input.csv", header=FALSE)
+behaviours <- read.csv(file="~/workspace/mdla_sedis/kdd_1/4_data_mining/TraMineR/input.csv", header=FALSE)
 
 #Transform into state sequences
 #http://traminer.unige.ch/doc/seqdef.html
@@ -29,4 +29,4 @@ decom <- seqdecomp(char_columns)
 #seqiplot(decom.seq , withlegend = True, title="Frequent event sequences 50% Frquence")
 
 #Writing results on csv
-write.table(decom, file="/home/mercosul/joab_workspace/mdla_sedis/kdd_1/4_data_mining/TraMineR/frequent_subsequences.csv",row.names=FALSE, na="",col.names=FALSE, sep=",")
+write.table(decom, file="~/workspace/mdla_sedis/kdd_1/4_data_mining/TraMineR/frequent_subsequences.csv",row.names=FALSE, na="",col.names=FALSE, sep=",")
