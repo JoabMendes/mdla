@@ -13,7 +13,7 @@ def sort_list(lista):
     return new_list
 
 
-ori_results = open('sorted_output2.txt')
+ori_results = open('spamagp_sorted_output.txt')
 
 
 brute_content = ori_results.readlines()
@@ -53,7 +53,7 @@ final_content = []
 for i in array_content:
     final_content.append(' '.join(i))
 
-output = open('relevant_output.txt2', 'w+')
+output = open('spamagp_relevant_output.txt', 'w+')
 
 for i in final_content:
     output.write(i+"\n")

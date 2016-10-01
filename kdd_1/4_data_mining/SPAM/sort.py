@@ -12,7 +12,7 @@ def sort_list(lista):
             new_list.insert(index+1, i)
     return new_list
 
-ori_results = open('output2.txt')
+ori_results = open('spamagp_output.txt')
 
 brute_content = ori_results.readlines()
 
@@ -28,7 +28,7 @@ array_final = []
 for i in sorted_matrix_content:
     array_final.append(' '.join(i))
 
-sorted_result = open('sorted_output2.txt', 'w+')
+sorted_result = open('spamagp_sorted_output.txt', 'w+')
 
 for i in array_final:
     sorted_result.write(i+"\n")
