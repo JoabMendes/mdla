@@ -2,7 +2,7 @@
 '''
 Transform sequential data to csv for SPAM algorithm input
 
-ACTION:MODULE,ACTION:MODULE,
+ACTION MODULE -1 ... -2
 
 '''
 
@@ -34,21 +34,16 @@ stdsc = len(students)
 c = 1
 for std in students:
     #str(std[0])+" "
-    print "Tranforming student " + str(std[0]) + "..."
+    print "Tranforming student "+str(std[0])+"..."
     std_sqc_str = ""
-    # Get the courses of this student
-    cur_new.execute(
-        """SELECT DISTINCT course FROM sequences WHERE student=%s""", [std[0]])
+    #Get the courses of this student
+    cur_new.execute("""SELECT DISTINCT course FROM sequences WHERE student=%s""", [std[0]])
     courses = cur_new.fetchall()
     total_courses = len(courses)
     c_courses = 0
-    cur_new.execute(
-        """SELECT sequence_id, course FROM sequences WHERE student=%s""", [std[0]])
+    cur_new.execute("""SELECT sequence_id, course FROM sequences WHERE student=%s""", [std[0]])
     sequences = cur_new.fetchall()
-    cur_new.execute("""SELECT event.action_id, event.module_id, event.sequence_id, actions.label, modules.label  FROM event
-                        JOIN actions ON actions.action_id = event.action_id
-                        JOIN modules ON modules.module_id = event.module_id
-                        WHERE sequence_id IN (SELECT sequence_id FROM sequences WHERE student=%s)""", [std[0]])
+    cur_new.execute("""SELECT action_id, module_id, sequence_id FROM event WHERE sequence_id IN (SELECT sequence_id FROM sequences WHERE student=%s)""", [std[0]])
     events = cur_new.fetchall()
     for course in courses:
         for sequence in sequences:
@@ -56,13 +51,13 @@ for std in students:
                 for event in events:
                     if event[2] == sequence[0]:
                         if str(event[0]) == "None" or str(event[1]) == "None":
-                            evtstr = "0000 -1 "
+                            evtstr = "0000,"
                         else:
-                            evtstr = str(event[3]) + ":" + str(event[4]) + ","
+                            evtstr = str(event[0]) + "" + str(event[1]) + ","
                         std_sqc_str += evtstr
         f.write(std_sqc_str + "\n")
-        c_courses += 1
-        print "Wrote course " + str(c_courses) + "/" + str(total_courses) + "."
+        c_courses+=1
+        print "Wrote course "+str(c_courses)+"/"+str(total_courses)+"."
     print "Done with student: " + str(std[0]) + " (" + str(c) + "/" + str(stdsc) + ")"
     c += 1
 f.close()
