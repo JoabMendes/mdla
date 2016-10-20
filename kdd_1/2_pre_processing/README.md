@@ -11,6 +11,7 @@ a natureza sequencial dos dados a estrutura proposta na normalização está rep
 no seguinte diagrama entidade-relacional:
 
 ![DER](http://i.imgur.com/hO6vsEO.png)
+Figura 2 - Diagrama ER das tabelas originadas após a normalização da tabela students_log_266 (2016). Fonte: Autoria própia.
 
 
 A normalização dos dados seguindo essa abstração, permitiu definir as sequências como os conjuntos de eventos
