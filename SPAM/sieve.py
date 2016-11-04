@@ -13,7 +13,7 @@ def sort_list(lista):
     return new_list
 
 
-ori_results = open('vgen_sorted_output.txt')
+ori_results = open('gap_4/sorted_output.txt')
 
 
 brute_content = ori_results.readlines()
@@ -53,7 +53,7 @@ final_content = []
 for i in array_content:
     final_content.append(' '.join(i))
 
-output = open('vgen_relevant_output.txt', 'w+')
+output = open('gap_4/relevant_output.txt', 'w+')
 
 for i in final_content:
     output.write(i+"\n")
