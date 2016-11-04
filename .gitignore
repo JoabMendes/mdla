@@ -3,3 +3,5 @@ kdd/3_transformation/input.csv
 kdd/4_data_mining/SPAM/input.txt
 kdd/4_data_mining/TraMineR/input.csv
 .DS_Store
+*input.txt
+spmf.jar

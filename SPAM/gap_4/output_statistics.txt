@@ -1,0 +1,7 @@
+Algorithm is running...
+=============  SPAM v0.97a- STATISTICS =============
+ Total time ~ 1499855 ms
+ Frequent sequences count : 58458
+ Max memory (mb) : 923.221443176269558458
+minsup 1634
+===================================================
