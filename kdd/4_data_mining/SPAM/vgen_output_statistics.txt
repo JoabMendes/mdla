@@ -1,8 +1,0 @@
-Algorithm is running...
-=============  VGEN v0.97- STATISTICS =============
- Total time ~ 38498 ms
- Frequent sequences count : 642
- Max memory (mb) : 596.2784271240234642
-minsup 1634
-Intersection count 6455
-===================================================

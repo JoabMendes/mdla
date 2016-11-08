@@ -1,0 +1,20 @@
+view:url,view:course,#SUP:1640
+view discussion:forum,view:course,view:resource,#SUP:1645
+view:course,view:page,view:course,#SUP:1676
+view:course,view forum:forum,view:user,#SUP:1687
+view:assign,view:course,view forum:forum,#SUP:1702
+idle,view:course,view:quiz,#SUP:1708
+view:course,view:folder,view:course,#SUP:2064
+idle,view:course,view:assign,view:course,#SUP:1693
+continue attempt:quiz,view summary:quiz,close attempt:quiz,review:quiz,#SUP:1734
+view:course,view:resource,view:course,view forum:forum,#SUP:1877
+view:course,view:quiz,attempt:quiz,continue attempt:quiz,#SUP:1939
+view discussion:forum,idle,idle,idle,idle,#SUP:1725
+view:course,view forum:forum,view discussion:forum,add post:forum,view discussion:forum,#SUP:1736
+view:course,view:assign,view submit assignment form:assign,submit:assign,view:assign,#SUP:1684
+idle,idle,view:course,view forum:forum,view discussion:forum,#SUP:1857
+view:course,view forum:forum,view discussion:forum,view:course,view forum:forum,view discussion:forum,#SUP:1655
+idle,idle,idle,idle,idle,idle,idle,view:course,view:resource,#SUP:1721
+idle,idle,idle,idle,idle,idle,idle,idle,idle,view:course,view forum:forum,#SUP:1644
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,view:course,#SUP:1650
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,#SUP:1655

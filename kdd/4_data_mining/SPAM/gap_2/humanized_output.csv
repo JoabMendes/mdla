@@ -1,0 +1,29 @@
+review:quiz,view:quiz,#SUP:1686 52%
+view:user,view discussion:forum,#SUP:1638 51%
+idle,view:course,view:folder,#SUP:1683 52%
+view:course,view:url,view:course,#SUP:1654 51%
+view:course,view:page,view:course,#SUP:1776 55%
+idle,idle,view:course,view:quiz,#SUP:1649 51%
+view:course,view:folder,view:course,view:course,#SUP:1762 55%
+view:course,view:resource,view:course,view:assign,#SUP:1652 51%
+view:course,view forum:forum,view:user,view:course,#SUP:1682 52%
+continue attempt:quiz,view summary:quiz,close attempt:quiz,review:quiz,#SUP:1748 54%
+continue attempt:quiz,view summary:quiz,close attempt:quiz,view:quiz,#SUP:1813 56%
+view:assign,view:course,view forum:forum,view:course,#SUP:1681 52%
+idle,view:course,view:assign,view:course,view:course,#SUP:1702 53%
+view:course,view:course,view:quiz,attempt:quiz,continue attempt:quiz,#SUP:1782 55%
+view:course,view:resource,view:course,view forum:forum,view discussion:forum,#SUP:1781 55%
+continue attempt:quiz,continue attempt:quiz,continue attempt:quiz,view summary:quiz,close attempt:quiz,#SUP:1636 51%
+view:course,view:course,view:assign,view submit assignment form:assign,submit:assign,view:assign,#SUP:1657 51%
+view:course,view:resource,view:course,view:course,view forum:forum,view:course,#SUP:1636 51%
+view:course,view forum:forum,view discussion:forum,add post:forum,view discussion:forum,view:course,#SUP:1675 52%
+view:assign,view:course,view:course,view:course,view:course,view:course,#SUP:1644 51%
+view:course,view forum:forum,view discussion:forum,idle,idle,idle,idle,#SUP:1641 51%
+view:course,view forum:forum,view:course,view forum:forum,view discussion:forum,view discussion:forum,view:course,#SUP:1652 51%
+view forum:forum,view discussion:forum,idle,idle,idle,idle,idle,idle,#SUP:1646 51%
+view discussion:forum,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,#SUP:1639 51%
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,view:course,view:resource,#SUP:1675 52%
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,view:course,view forum:forum,#SUP:1642 51%
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,view forum:forum,#SUP:1667 52%
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,view:course,#SUP:1637 51%
+idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,idle,#SUP:1660 51%
