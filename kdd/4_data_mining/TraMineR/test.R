@@ -1,7 +1,7 @@
 library(TraMineR)
 
 #Read from csv
-behaviours <- read.csv(file="~/workspace/mdla_sedis/kdd_1/4_data_mining/TraMineR/test.csv", header=FALSE)
+behaviours <- read.csv(file="~/workspace/mdla_sedis/kdd/4_data_mining/TraMineR/test.csv", header=FALSE)
 
 #Transform into state sequences
 #http://traminer.unige.ch/doc/seqdef.html
